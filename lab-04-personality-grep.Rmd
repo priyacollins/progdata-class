@@ -39,8 +39,8 @@ green_data |>
     open8 = recode(open8, "1" = "5", "2" = "4", "3" = "3", "4" = "2", "5" = "1"),
     open9 = recode(open9, "1" = "5", "2" = "4", "3" = "3", "4" = "2", "5" = "1"),
     open10 = recode(open10, "1" = "5", "2" = "4", "3" = "3", "4" = "2", "5" = "1"),
-    student = recode(student, "1" = "non_student", "2" = "student")
-  )
+    student = recode(student, "1" = "non_student", "2" = "student"))
+  
 
 green_data |>
   rowwise() |>
@@ -51,6 +51,8 @@ green_data |>
     open_total = mean(c_across(open1:open10), na.rm = TRUE),
     .before = everything()
   )
+
+
 ```
 
 # Exercise 3
