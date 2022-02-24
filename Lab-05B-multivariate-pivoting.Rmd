@@ -27,3 +27,33 @@ family  <- read_csv(
   )
 ```
 
+```{r}
+family |> 
+  DT::datatable(rownames = FALSE)
+```
+
+```{r}
+family_longest <- family |>
+  pivot_longer(
+    cols = - family_id,
+    names_to = c("wave", "scale", "family_member"),
+    names_sep = "_",
+    values_to = "score",
+    values_drop_na = TRUE
+  )
+
+print(family_longest)
+
+```
+
+```{r}
+family_long <- family |>
+  pivot_longer(
+    cols = - family_id,
+    names_to = c("wave", ".value", "family_member"),
+    names_sep = "_"
+  )
+
+print(family_long)
+
+```
