@@ -27,7 +27,7 @@ green_data |>
   unique()
 
 # \(x) means a function "\" of x, this syntax is how to make the function, and x is the argument of the function, then after the parentheses, you write what you want the function to do.
-green_data |>
+green_data <- green_data |>
   mutate(
     across(
       -id,
@@ -36,15 +36,7 @@ green_data |>
     )
   )
 
-# to replace a bunch of NA data
-green_data <- green_data |>
-  mutate(
-    across(
-      -id,
-      \(x) na_if(x, -99)
-    )
-  )
-  
+green_data
 ```
 
 # Exercise 2
@@ -78,6 +70,8 @@ green_data <- green_data |>
   ) |>
   ungroup()
 
+green_data
+
 ```
 
 # Exercise 3
@@ -86,19 +80,13 @@ green_data <- green_data |>
   mutate(
     across(
       green_total:open_total,
-      \(x) 100 * (x - 1) / (5 - 1)
-      .names = "[.col]_pomp"
+      \(x) 100* (x - 1) / (5 - 1),
+      .names = "{.col}_pomp"
     ),
     .after = open_total
   )
 
-# green_data <- green_data |>
-#  mutate(
-#   across(
-#      green_total:open_total,
-#      \(x) datawizard::change_scale(x, range = c(1, 5), to = c(0, 100))
-#    )
-#  )
+green_data
 
 ```
 
@@ -109,13 +97,30 @@ ggplot(green_data) +
   aes(x = green_total_pomp) +
   geom_histogram()
 
+ggplot(green_data) +
+  aes(x = comp_total_pomp) +
+  geom_histogram()
+
+ggplot(green_data) +
+  aes(x = intel_total_pomp) +
+  geom_histogram()
+
+ggplot(green_data) +
+  aes(x = open_total_pomp) +
+  geom_histogram()
+
+
 ```
 
 # Exercise 5 
 ```{r}
+green_data <- green_data |>
+  drop_na(student)
+
 ggplot(green_data) +
-  aes(x = open_total_pomp, y = green_total_pomp) +
-  geom_point()
+  aes(x = open_total_pomp, y = green_total_pomp, color = factor(student)) +
+  geom_point() +
+  geom_smooth(method = lm)
 
 ```
 
@@ -127,16 +132,35 @@ ggplot(green_data) +
 
 # filters rows where student is not NA
 
+green_data <- green_data |>
+  mutate(green_data, student = factor(student, levels = c("1", "2"), labels = c("no", "yes")))
+
 green_data |>
   filter(!is.na(student)) |>
-ggplot(green_data) +
-  aes(x = open_total_pomp, y = green_total_pomp, color = factor(student)) +
-  geom_point() +
-  geom_smooth(method = "lm")
+ggplot() +
+  aes(x = green_total_pomp, y = student, color = student, fill = student) +
+  geom_jitter(height = .15) +
+  geom_boxplot(color = "black",
+               alpha = .5,
+               width = .1,
+               size = .5) +
+  ggdist::stat_slab(height = .3,
+                    color = "black",
+                    size = .2,
+                    alpha = .5,
+                    position = position_nudge(y = .2))
+
 
 ```
 
 # Exercise 7
 ```{r}
+green_data |>
+  group_by(student) |>
+  summarize(mean = mean(green_total_pomp:open_total_pomp),
+            sd = sd(green_total_pomp:open_total_pomp),
+            median = median(green_total_pomp:open_total_pomp),
+            min = min(green_total_pomp:open_total_pomp),
+            max = max(green_total_pomp:open_total_pomp))
 
 ```
