@@ -9,7 +9,12 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 
 library(tidyverse)
+```
 
+#Exercise 1
+
+```{r}
+#setup
 songs <- read_csv("https://raw.githubusercontent.com/bwiernik/progdata-class/master/data/singer/songs.csv")
 locations <- read_csv("https://raw.githubusercontent.com/bwiernik/progdata-class/master/data/singer/loc.csv")
 
@@ -20,22 +25,18 @@ locations <- read_csv("https://raw.githubusercontent.com/bwiernik/progdata-class
    select(title, everything()) |> 
    rename(album = release,
           song  = title))
-```
 
-#Exercise 1
-
-```{r}
-# 1.1
+#1.1
 time |> 
   left_join(album, by = c("song", "artist_name"))
 
 #1.2
 time |> 
-  FILL_THIS_IN(album, by = FILL_THIS_IN)
+  full_join(album, by = "song", "artist_name")
 
 #1.3
 time |> 
-  FILL_THIS_IN(album, by = "song")
+  anti_join(album, by = "song")
 
 #1.4
 time |> 
@@ -43,12 +44,12 @@ time |>
 
 #1.5
 time |> 
-  full_join(album, by = "song", "artist_name")
+  full_join(album, by = "song")
 
 ```
 
 #Exercise 2
-```{r setup}
+```{r}
 fell <- read_csv("https://raw.githubusercontent.com/jennybc/lotr-tidy/master/data/The_Fellowship_Of_The_Ring.csv")
 ttow <- read_csv("https://raw.githubusercontent.com/jennybc/lotr-tidy/master/data/The_Two_Towers.csv")
 retk <- read_csv("https://raw.githubusercontent.com/jennybc/lotr-tidy/master/data/The_Return_Of_The_King.csv")
@@ -60,13 +61,13 @@ bind_rows(fell, ttow, retk)
 
 #2.2
 fell |> 
-  FILL_THIS_IN(FILL_THIS_IN, by = "Race") |> 
-  FILL_THIS_IN(FILL_THIS_IN, by = "Race")
+  anti_join(retk, by = "Race") |> 
+  anti_join(ttow, by = "Race")
 
 ```
 
 #Exercise 3
-```{r setup}
+```{r}
 (y <-  tibble(x1 = LETTERS[1:3], x2 = 1:3))
 (z <- tibble(x1 = c("B", "C", "D"), x2 = 2:4))
 
@@ -74,15 +75,15 @@ fell |>
 
 ```{r}
 #3.1
-FILL_THIS_IN(y, z)
+intersect(y, z)
 
 #3.2
-FILL_THIS_IN(
+union(
   mutate(y, day = "Day 1"),
   mutate(z, day = "Day 2")
 )
 
 #3.3
-FILL_THIS_IN(FILL_THIS_IN, FILL_THIS_IN)
+setdiff(y, z)
 
 ```
