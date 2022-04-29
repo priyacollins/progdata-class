@@ -13,6 +13,9 @@ lotr  <- read_csv("https://raw.githubusercontent.com/jennybc/lotr-tidy/master/da
   rename(Species = Race)
 ```
 
+# Exercise 1
+## This data is in tidy format because the columns are variables and are matched with rows that have observations.
+
 # E 1.2
 ```{r}
 (lotr_wide <- lotr |> 
