@@ -29,4 +29,6 @@ Some basic Markdown syntax you will see in my .md docs include:
 - unordered list item 2
 ```
 
- 
+ # Links to my portfolio pieces here!
+ ## P1: https://github.com/priyacollins/portfoliopiece1
+ ## P2: 
