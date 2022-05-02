@@ -1,0 +1,25 @@
+---
+title: "12 Peer Reviews"
+author: "Priya Singh Collins"
+date: "5/2/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Here are the links to my completed peer reviews!
+
+1. (https://github.com/KiprasVarkala/progdata-class/issues/5)
+2. (https://github.com/GlucasUSF/progdata-class/issues/2)
+3. (https://github.com/jayschmidtavendano/progdata-class/issues/7)
+4. (https://github.com/rrorman/progdata-class/issues/8)
+5. (https://github.com/cassrichardson/progdata-class/issues/4)
+6. (https://github.com/aeperusse/progdata-class/issues/6)
+7. (https://github.com/valentinafender/progdata-class/issues/7)
+8. (https://github.com/ncaliskan/progdata-class/issues/13)
+9. (https://github.com/avenetto/progdata-class/issues/6)
+10. (https://github.com/sabeisenberg/progdata-class/issues/10)
+11. (https://github.com/reupton/progdata-class/issues/8)
+12. (https://github.com/judesullivan/progdata-class/issues/8)
