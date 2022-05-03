@@ -79,52 +79,29 @@ ggplot(plastic_waste) +
 
 Remove this text, and add your answer for Exercise 3 here.
 ```{r}
+# 3.1
+ggplot(plastic_waste) +
+  aes(x = plastic_waste_per_cap, y = mismanaged_plastic_waste_per_cap, fill = continent) +
+  geom_point()
 
+# As plastic waste per cap increases, mismanaged plastic waste per cap also increases.
 
-```
+# 3.2
+ggplot(plastic_waste) +
+  aes(x = plastic_waste_per_cap, y = mismanaged_plastic_waste_per_cap, color = continent) +
+  geom_point()
 
-### Exercise 4
+# 3.3
+ggplot(plastic_waste) +
+  aes(x = plastic_waste_per_cap, y = total_pop, color = continent) +
+  geom_line() +
+  geom_smooth()
 
-Remove this text, and add your answer for Exercise 4 here.
+ggplot(plastic_waste) +
+  aes(x = plastic_waste_per_cap, y = coastal_pop, color = continent) +
+  geom_line() +
+  geom_smooth()
 
-```{r plastic-waste-violin}
-# insert code here
-```
-
-### Exercise 5
-
-Remove this text, and add your answer for Exercise 5 here.
-
-```{r plastic-waste-mismanaged}
-# insert code here
-```
-
-### Exercise 6
-
-Remove this text, and add your answer for Exercise 6 here.
-
-```{r plastic-waste-mismanaged-continent}
-# insert code here
-```
-
-### Exercise 7
-
-Remove this text, and add your answer for Exercise 7 here.
-
-```{r plastic-waste-population-total}
-# insert code here
-```
-
-```{r plastic-waste-population-coastal}
-# insert code here
-```
-
-### Exercise 8
-
-Remove this text, and add your answer for Exercise 8 here.
-
-```{r recreate-viz}
-# insert code here
 ```
 
 ## Pro-Tips
