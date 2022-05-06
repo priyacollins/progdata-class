@@ -78,7 +78,7 @@ ggplot(data = penguinsdata) +
 ```{r}
 penguinsdata |>
   group_by(species) |>
-  summarize(mean(flipper_length_mm, na.rm = TRUE), mean(body_mass_g, na/rm = TRUE))
+  summarize(mean(flipper_length_mm, na.rm = TRUE), mean(body_mass_g, na.rm = TRUE))
 
 ggplot(data = penguinsdata) +
   aes(y = species, x = body_mass_g, fill = species) +
